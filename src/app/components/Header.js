@@ -54,34 +54,34 @@ export default function Header() {
       {/* Only show the nav section if it's not a /projects/[tag] page */}
       {!isProjectsPage && (
         <nav className="py-6 px-2">
-          <ul className="menlo flex space-x-4 w-full text-black">
+          <ul className="menlo flex space-x-8 w-full text-black">
             <li className=''>
               <Link href={`/projects/code`} className="fields">
-                <Image src={code} alt="Code" width={35} height={35} />
+                <Image src={code} alt="Code" width={30} height={30} />
                 <span>Code</span>
               </Link>
             </li>
             <li>
               <Link href={`/projects/design`} className="fields">
-                <Image src={design} alt="Design" width={35} height={35} />
+                <Image src={design} alt="Design" width={30} height={30} />
                 <span>Design</span>
               </Link>
             </li>
             <li>
               <Link href={`/projects/fashion`} className="fields">
-                <Image src={fashion} alt="fashion" width={35} height={35} />
+                <Image src={fashion} alt="fashion" width={30} height={30} />
                 <span>Fashion</span>
               </Link>
             </li>
             <li>
               <Link href={`/projects/art`} className="fields">
-                <Image src={art} alt="art" width={35} height={35} />
+                <Image src={art} alt="art" width={30} height={30} />
                 <span>Art</span>
               </Link>
             </li>
             <li>
               <Link href={`/projects/publication`} className="fields">
-                <Image src={publications} alt="publications" width={35} height={35} />  
+                <Image src={publications} alt="publications" width={30} height={30} />  
                 <span>Publications</span>
               </Link>
             </li>
