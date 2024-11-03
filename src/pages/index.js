@@ -102,8 +102,9 @@ const Home = () => {
                                 <div className="additional-images grid grid-cols-2 gap-2 py-6">
                                     {project.images.map((mediaUrl, index) => {
                                         // Determine if the mediaUrl should be treated as an image or video
-                                        const isVideo = mediaUrl.includes("videos.ctfassets.net") && mediaUrl.endsWith("download");
-                                        const isImage = mediaUrl.includes("images.ctfassets.net") && mediaUrl.endsWith("download");
+                                        const isImage = /\.(jpg|jpeg|png|gif)$/i.test(mediaUrl);
+                                        const isPdf = /\.pdf$/i.test(mediaUrl);
+                                        const isVideo = /\.(mp4|webm|ogg)$/i.test(mediaUrl);
 
                                         return (
                                             <div key={index} className="relative">
