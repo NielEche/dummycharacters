@@ -54,7 +54,7 @@ footer {
 
 .WebButton {
     display: inline-block;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     text-align: center;
     cursor: pointer !important;
@@ -149,6 +149,4 @@ footer {
     align-items: center;
     font-size: 10px;
   }
-
-
 

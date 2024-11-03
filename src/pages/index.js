@@ -44,11 +44,11 @@ const Home = () => {
                     return (
                         <div key={project.id} className="project-card pb-6 border-r-2 border-black px-6 pt-4">
                             <div className="flex justify-between">
-                                <h2 className="project-title leading-tight menlo text-xs text-black font-black underline lg:pr-18 pr-8">{project.title}</h2>
+                                <h2 className="project-title leading-tight menlo text-black font-black underline lg:pr-18 pr-6">{project.title}</h2>
                                 <div className="flex justify-around">
                                 {Array.isArray(project.field) && project.field.map((tag, index) => (
                                     <Link href={`/projects/${encodeURIComponent(tag)}`} className="fields" key={index}>
-                                        <p className="WebButton mx-2 text-xs py-1 px-2">{tag}</p>
+                                        <p className="WebButton WebButton2 mx-2 p-1">{tag}</p>
                                     </Link>
                                 ))}
 
@@ -90,7 +90,7 @@ const Home = () => {
                             <div className="flex justify-between py-4">
                                 <button 
                                     onClick={() => handleMoreClick(project)} 
-                                    className="WebButton mx-2 text-xs py-1 px-2"
+                                    className="WebButton WebButton2 mx-2 p-1"
                                 >
                                     More
                                 </button>

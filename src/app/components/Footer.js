@@ -46,10 +46,10 @@ export default function Footer() {
     <footer className="fixed bottom-0 left-0 w-full z-50 bg-transparent p-0">
       <nav className="flex justify-between py-1 px-2">
         <ul className="flex justify-start space-x-2 w-full">
-          <li className='WebButton lg:px-4 px-2'>
+          <li className='WebButton px-2'>
             <Link href="/" className='flex'>
-                <Image src={smile} alt="Home" width={25} height={25} />
-              <span className='lg:pr-0 pr-2'>Eche</span> 
+                <Image src={smile} alt="Home" width={20} height={20} />
+              <span className='pr-2 font-black'>Eche</span> 
             </Link>
           </li>
           <li className='WebButton px-0'>
@@ -57,17 +57,17 @@ export default function Footer() {
 
           <li className="px-1">
             <Link href="https://www.instagram.com/niel_eche/" target='_blank' >
-            <Image src={insta} alt="Instagram" width={25} height={25} />
+            <Image src={insta} alt="Instagram" width={20} height={20} />
             </Link>
           </li>
           <li className="px-1">
             <Link href="https://twitter.com/niel_eche" target='_blank' >
-            <Image src={twitter} alt="twitter" width={25} height={25} />
+            <Image src={twitter} alt="twitter" width={20} height={20} />
             </Link>
           </li>
           <li className="px-1">
             <Link href="https://www.saatchiart.com/nieleche" target='_blank' >
-            <Image src={saatchi} alt="saatchi" width={30} height={30} />
+            <Image src={saatchi} alt="saatchi" width={20} height={20} />
             </Link>
           </li>
        
@@ -78,12 +78,12 @@ export default function Footer() {
           </li>
           <li className="px-0">
             <Link href="https://open.spotify.com/artist/5g0PVwViRJAMgEF2XBulgx" target='_blank' >
-            <Image src={spotify} alt="Spotify" width={25} height={25} />
+            <Image src={spotify} alt="Spotify" width={20} height={20} />
             </Link>
           </li>
           <li className=" px-0 ">
             <Link href="https://music.apple.com/ng/artist/niel-eche/1466858634" target='_blank'>
-            <Image src={apple} alt="Apple" width={25} height={25} />
+            <Image src={apple} alt="Apple" width={20} height={20} />
             </Link>
           </li>
          

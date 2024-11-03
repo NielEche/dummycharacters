@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import logoImage from '../../assets/DC3DTRANS.gif';
 import useContentful from '../../lib/useContentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import code from '../../assets/28.ico';
+import code from '../../assets/16.ico';
 import fashion from '../../assets/87.ico';
 import design from '../../assets/96.ico';
 import art from '../../assets/81.ico';
