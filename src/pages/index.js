@@ -51,7 +51,6 @@ const Home = () => {
                                         <p className="WebButton WebButton2 mx-2 p-1">{tag}</p>
                                     </Link>
                                 ))}
-
                                 </div>
                             </div>
                             <div className="image-container text-xs text-black pb-6">
@@ -90,9 +89,8 @@ const Home = () => {
                             <div className="flex justify-between py-4">
                                 <button 
                                     onClick={() => handleMoreClick(project)} 
-                                    className="WebButton WebButton2 mx-2 p-1"
-                                >
-                                    More
+                                    className="WebButton WebButton2 mx-2 p-1">
+                                    {expandedProject === project.id ? 'Less' : 'More'}
                                 </button>
                                 <p className="text-black mx-2 text-xs py-1 px-2">Share</p>
                             </div>
@@ -101,7 +99,6 @@ const Home = () => {
                             {expandedProject === project.id && project.images && (
                                 <div className="additional-images grid grid-cols-2 gap-2 py-6">
                                     {project.images.map((mediaUrl, index) => {
-                                        // Determine if the mediaUrl should be treated as an image or video
                                         const isImage = /\.(jpg|jpeg|png|gif)$/i.test(mediaUrl);
                                         const isPdf = /\.pdf$/i.test(mediaUrl);
                                         const isVideo = /\.(mp4|webm|ogg)$/i.test(mediaUrl);
@@ -114,22 +111,22 @@ const Home = () => {
                                                         height={150}
                                                         controls
                                                         className="project-video-preview cursor-pointer"
-                                                        onClick={() => handleImageClick(mediaUrl)} // Handle video click as needed
+                                                        onClick={() => handleImageClick(mediaUrl)}
                                                     >
                                                         <source src={mediaUrl} type="video/mp4" />
                                                         Your browser does not support the video tag.
                                                     </video>
                                                 ) : isImage ? (
                                                     <Image
-                                                        src={formatImageUrl(mediaUrl)} // You may need to adjust formatImageUrl to handle direct downloads
+                                                        src={formatImageUrl(mediaUrl)}
                                                         alt={`Image ${index + 1} from ${project.title}`}
                                                         width={150}
                                                         height={150}
                                                         className="project-image cursor-pointer"
-                                                        onClick={() => handleImageClick(mediaUrl)} // Open modal on image click
+                                                        onClick={() => handleImageClick(mediaUrl)}
                                                     />
                                                 ) : (
-                                                    <p className="text-red-500">Unsupported media type: {mediaUrl}</p> // Show unsupported type with URL
+                                                    <p className="text-red-500">Unsupported media type: {mediaUrl}</p>
                                                 )}
                                             </div>
                                         );
@@ -173,8 +170,6 @@ const Home = () => {
                                 className="project-image object-contain"
                             />
                         </div>
-                       
-                      
                     </div>
                 </div>
             )}
