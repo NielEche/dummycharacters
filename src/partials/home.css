@@ -1,0 +1,9 @@
+body {
+    background-image: url('/sky.jpg') !important; /* Path to your image */
+    background-size: cover; /* Ensures the image covers the whole screen */
+    background-attachment: fixed; /* Keeps the background fixed as you scroll */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from tiling */
+    height: 100vh; /* Optional, ensures the background fills the viewport height */
+    width: 100vw; /* Ensures the background spans the full viewport width */
+}

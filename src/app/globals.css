@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@font-face {
+  font-family: 'menlo'; /* Choose a custom name for your font */
+  src: url('/fonts/menlo-regular.ttf') format('truetype');
+}
+
+.menlo{
+  font-family: 'menlo' !important;
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'menlo', Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+footer {
+  background-color: #c0c0c0 !important;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-color: #dfdfdf !important;
+  border-bottom: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-top: 2px;
+  border-style: solid !important;
+}
+
+
+.WebButton {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer !important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 0px !important;
+    border-color: #dfdfdf !important;
+    border-style: outset !important;
+    border-width: 3px !important;
+    background-color: #c0c0c0 !important;
+    color: #000;
+}
+
+.bio {
+  background-image: linear-gradient(to right, #394ea0, #557ab9);
+  padding: 5px;
+  border-color: #858481 !important;
+  border-style: outset !important;
+  border-bottom: none !important;
+  border: 2px solid
+}
+
+
+.biobtn {
+  border-radius: 0px !important;
+    border-color: #858481 !important;
+    border-style: outset !important;
+    background-color: #d9d7d2 !important;
+    padding: 0px 8px !important;
+    border-width: 2px !important;
+    font-family: 'Menlo' !important;
+    color: #000;
+}
+
+.biodetails {
+  padding: 40px;
+  border-color: #858481 !important;
+  border-style: outset !important;
+  border-top: none !important;
+  background-color: #d9d7d2;
+  font-size: 12px;
+  color: #333;
+  border: 2px solid
+}
+
+.biodetails h3 {
+  font-family: 'Menlo';
+  font-weight: bolder;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 55px;
+  text-shadow: 1px 1px #000, 2px 2px #000, 3px 3px #000;
+  -webkit-transition: all 0.12s ease-out;
+  -moz-transition: all 0.12s ease-out;
+  -ms-transition: all 0.12s ease-out;
+  -o-transition: all 0.12s ease-out;
+}
+
+
+ .marquee {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    color: #000; /* Customize color */
+    font-size: 24px; /* Customize font size */
+  }
+
+  .marquee span {
+    display: inline-block;
+    animation: marqueeAnimation 10s linear infinite;
+    padding-right: 2rem; /* Space between duplicates */
+  }
+
+  @keyframes marqueeAnimation {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+
+  .fields {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+
+
