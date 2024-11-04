@@ -54,7 +54,7 @@ export default function Header() {
       {/* Only show the nav section if it's not a /projects/[tag] page */}
       {!isProjectsPage && (
         <nav className="py-6 px-2">
-          <ul className="menlo flex space-x-8 w-full text-black">
+          <ul className="menlo flex space-x-4 w-full text-black">
             <li className=''>
               <Link href={`/projects/code`} className="fields">
                 <Image src={code} alt="Code" width={30} height={30} />

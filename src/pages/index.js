@@ -11,9 +11,7 @@ const Home = () => {
     const [selectedProject, setSelectedProject] = useState(null);
     const [expandedProject, setExpandedProject] = useState(null);
 
-    if (loading) {
-        return <Loading />;
-    }
+
 
     const formatImageUrl = (url) => {
         if (!url) return '';
