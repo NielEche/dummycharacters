@@ -1,5 +1,5 @@
-
-"use client";import React, { useState } from 'react';
+"use client";
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -13,13 +13,13 @@ import art from '../../assets/35.ico';
 import publications from '../../assets/68.ico';
 import crusero from '../../assets/crossTee2.png';
 import lh from '../../assets/LHlogo.png';
-import spaceG from '../../assets/spaceG.gif';
+import space from '../../assets/spaceG.gif';
 import Loading from '../components/Loading';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const { records, loading } = useContentful();
+  const { homeRecord, loading } = useContentful();
 
   if (loading) {
     return <Loading />;
@@ -32,20 +32,23 @@ export default function Header() {
 
   return (
     <header className="left-0 w-full z-50 p-0 px-6">
-      <div className=" pt-2">
+      <div className="pt-2">
         <div className="bio text-right">
           <button className="biobtn"> <span>X</span></button>
         </div>
         <div className="biodetails lg:flex justify-between">
           <div id="niel">
-            <p className='lg:pr-20'>{records && documentToReactComponents(records)}</p>
+            <div className='lg:pr-20'>
+              {/* Render the about content from homeRecord */}
+              {homeRecord && documentToReactComponents(homeRecord)}
+            </div>
             <div className='menlo text-base mt-2'>
               <Link href="/about">Read More</Link>
             </div>
           </div>
           <div className="text-center py-2">
             <h3 className="marquee">
-              <span> Niel Eche™</span>
+              <span>Niel Eche™</span>
             </h3>
           </div>
         </div>
@@ -55,7 +58,7 @@ export default function Header() {
       {!isProjectsPage && (
         <nav className="py-6 px-2">
           <ul className="menlo flex space-x-4 w-full text-black">
-            <li className=''>
+            <li>
               <Link href={`/projects/code`} className="fields">
                 <Image src={code} alt="Code" width={30} height={30} />
                 <span>Code</span>
@@ -69,37 +72,39 @@ export default function Header() {
             </li>
             <li>
               <Link href={`/projects/fashion`} className="fields">
-                <Image src={fashion} alt="fashion" width={30} height={30} />
+                <Image src={fashion} alt="Fashion" width={30} height={30} />
                 <span>Fashion</span>
               </Link>
             </li>
             <li>
               <Link href={`/projects/art`} className="fields">
-                <Image src={art} alt="art" width={30} height={30} />
+                <Image src={art} alt="Art" width={30} height={30} />
                 <span>Art</span>
               </Link>
             </li>
             <li>
               <Link href={`/projects/publication`} className="fields">
-                <Image src={publications} alt="publications" width={30} height={30} />  
+                <Image src={publications} alt="Publications" width={30} height={30} />
                 <span>Publications</span>
               </Link>
             </li>
           </ul>
 
           <ul className="menlo py-6 flex justify-end space-x-8 w-full text-black">
-            <li className=''>
-                <Image className="fields" src={spaceG} alt="spaceG" width={120} height={120}  style={{ width: 'auto', height: 'auto' }} />
+            <li>
+              <div className="fields">
+                <Image className='spaceG' src={space} alt="spaceG" />
+              </div>
             </li>
             <li>
               <Link href="https://www.instagram.com/loudhousephc/" target='_blank' className="fields">
-                <Image src={lh} alt="loudhouse" width={70} height={70} />
+                <Image src={lh} alt="LoudHouse" width={70} height={70} />
                 <span>LoudHouse</span>
               </Link>
             </li>
             <li>
               <Link href="https://www.crusero.store/" target='_blank' className="fields">
-                <Image src={crusero} alt="crusero" width={70} height={70} />
+                <Image src={crusero} alt="Crusero" width={70} height={70} />
                 <span>Crusero</span>
               </Link>
             </li>

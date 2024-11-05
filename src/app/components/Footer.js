@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation'; // Import from next/navigation
 import logoImage from '../../assets/DC3DTRANS.gif';
@@ -48,7 +48,7 @@ export default function Footer() {
         <ul className="flex justify-start space-x-2 w-full">
           <li className='WebButton px-2'>
             <Link href="/" className='flex'>
-                <Image src={smile} alt="Home" width={20} height={20}  style={{ width: 'auto', height: 'auto' }} />
+                <Image src={smile} alt="Home" width={20} height={20}  />
               <span className='pr-2 font-black'>Eche</span> 
             </Link>
           </li>
@@ -57,17 +57,17 @@ export default function Footer() {
 
           <li className="px-1">
             <Link href="https://www.instagram.com/niel_eche/" target='_blank' >
-            <Image src={insta} alt="Instagram" width={20} height={20}  style={{ width: 'auto', height: 'auto' }} />
+            <Image src={insta} alt="Instagram" width={20} height={20}  />
             </Link>
           </li>
           <li className="px-1">
             <Link href="https://twitter.com/niel_eche" target='_blank' >
-            <Image src={twitter} alt="twitter" width={20} height={20}  style={{ width: 'auto', height: 'auto' }}/>
+            <Image src={twitter} alt="twitter" width={20} height={20} />
             </Link>
           </li>
           <li className="px-1">
             <Link href="https://www.saatchiart.com/nieleche" target='_blank' >
-            <Image src={saatchi} alt="saatchi" width={20} height={20}  style={{ width: 'auto', height: 'auto' }}/>
+            <Image src={saatchi} alt="saatchi" width={20} height={20} />
             </Link>
           </li>
        
@@ -78,12 +78,12 @@ export default function Footer() {
           </li>
           <li className="px-0">
             <Link href="https://open.spotify.com/artist/5g0PVwViRJAMgEF2XBulgx" target='_blank' >
-            <Image src={spotify} alt="Spotify" width={20} height={20} style={{ width: 'auto', height: 'auto' }} />
+            <Image src={spotify} alt="Spotify" width={20} height={20} />
             </Link>
           </li>
           <li className=" px-0 ">
             <Link href="https://music.apple.com/ng/artist/niel-eche/1466858634" target='_blank'>
-            <Image src={apple} alt="Apple" width={20} height={20}  style={{ width: 'auto', height: 'auto' }}/>
+            <Image src={apple} alt="Apple" width={20} height={20} />
             </Link>
           </li>
          
