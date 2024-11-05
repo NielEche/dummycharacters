@@ -10,12 +10,13 @@ const Home = () => {
     const { loading, projects, sound } = useContentful();
     const [selectedProject, setSelectedProject] = useState(null);
     const [expandedProject, setExpandedProject] = useState(null);
+    const [showShareOptions, setShowShareOptions] = useState(false);
+    const [currentProject, setCurrentProject] = useState(null);
 
     const formatImageUrl = (url) => {
-        if (typeof url !== 'string' || !url) return '';  // Ensure url is a string
+        if (typeof url !== 'string' || !url) return ''; 
         return url.startsWith('http') ? url : `https:${url}`;
     };
-    
 
     const handleMoreClick = (project) => {
         setExpandedProject(prev => prev === project.id ? null : project.id);
@@ -29,6 +30,24 @@ const Home = () => {
         setSelectedProject(null);
     };
 
+    const toggleShareOptions = (project) => {
+        setCurrentProject(project);
+        setShowShareOptions(prev => !prev);
+    };
+
+    const getShareLinks = () => {
+        if (!currentProject) return {};
+        
+        const projectUrl = `https://dummy-characters.space`; // Set to your site's homepage or a relevant page
+        const title = encodeURIComponent(currentProject.title);
+        const imageUrl = encodeURIComponent(formatImageUrl(currentProject.cover));
+
+        return {
+            twitter: `https://twitter.com/intent/tweet?text=${title}&url=${encodeURIComponent(projectUrl)}&via=niel_eche&image=${imageUrl}`,
+            instagram: `https://www.instagram.com/share?url=${projectUrl}`, // Instagram does not support direct link sharing
+        };
+    };
+
     return (
         <div className='py-10 lg:px-4 px-2 lg:flex justify-between'>
             <div className="project-list lg:grid grid-cols-2 gap-4">
@@ -40,12 +59,11 @@ const Home = () => {
                             <div className="flex justify-between">
                                 <h2 className="project-title leading-tight menlo text-black font-black underline lg:pr-18 pr-6">{project.title}</h2>
                                 <div className="flex justify-around">
-                                {Array.isArray(project.field) && project.field.map((tag) => (
-                                    <Link href={`/projects/${encodeURIComponent(tag)}`} className="fields" key={tag}>
-                                        <p className="WebButton WebButton2 mx-2 p-1">{tag}</p>
-                                    </Link>
-                                ))}
-
+                                    {Array.isArray(project.field) && project.field.map((tag) => (
+                                        <Link href={`/projects/${encodeURIComponent(tag)}`} className="fields" key={tag}>
+                                            <p className="WebButton WebButton2 mx-2 p-1">{tag}</p>
+                                        </Link>
+                                    ))}
                                 </div>
                             </div>
 
@@ -67,50 +85,63 @@ const Home = () => {
                             )}
                             
                             <div className="flex justify-between py-4">
-                                <button 
-                                    onClick={() => handleMoreClick(project)} 
-                                    className="WebButton WebButton2 mx-2 p-1">
-                                    {expandedProject === project.id ? 'Less' : 'More'}
-                                </button>
-                                <p className="text-black mx-2 text-xs py-1 px-2">Share</p>
+                                <div>
+                                    <button 
+                                        onClick={() => handleMoreClick(project)} 
+                                        className="WebButton WebButton2 mx-2 p-1">
+                                        {expandedProject === project.id ? 'Less' : 'More'}
+                                    </button> 
+                                </div>
+                            
+                                <div className="relative">
+                                    <button onClick={() => toggleShareOptions(project)} className="text-sm mx-2 p-1">
+                                        Share <span className="text-xl">&#x2197;</span> 
+                                    </button>
+                                    {showShareOptions && currentProject === project && (
+                                        <div className="absolute bg-white shadow-lg border text-sm rounded p-2">
+                                            {getShareLinks().twitter && (
+                                                <a href={getShareLinks().twitter} target="_blank" rel="noopener noreferrer" className="block text-blue-500">Share on Twitter</a>
+                                            )}
+                                            {/*<span className="block text-pink-500">Copy the link and share on Instagram</span>*/}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                             {/* Additional images section */}
                             {expandedProject === project.id && project.images && (
-                               
-
                                 <div className="additional-images grid grid-cols-2 gap-2 py-6">
-                                {project.images.map((mediaUrl, index) => {
-                                    const isVideo = mediaUrl.includes("videos.ctfassets.net");
-                                    const isImage = mediaUrl.includes("images.ctfassets.net");
+                                    {project.images.map((mediaUrl, index) => {
+                                        const isVideo = mediaUrl.includes("videos.ctfassets.net");
+                                        const isImage = mediaUrl.includes("images.ctfassets.net");
 
-                                    return (
-                                        <div key={index} className="relative">
-                                            {isVideo ? (
-                                                <video
-                                                    width={150}
-                                                    height={150}
-                                                    controls
-                                                    className="project-video-preview object-contain cursor-pointer"
-                                                    onClick={() => handleImageClick(mediaUrl)}
-                                                >
-                                                    <source src={mediaUrl} type="video/mp4" />
-                                                </video>
-                                            ) : isImage ? (
-                                                <Image
-                                                    src={formatImageUrl(mediaUrl)}
-                                                    alt={`Image from ${project.title}`}
-                                                    width={150}
-                                                    height={150}
-                                                    className="project-image object-contain cursor-pointer"
-                                                    onClick={() => handleImageClick(mediaUrl)}
-                                                />
-                                            ) : (
-                                                <p className="text-red-500">Unsupported media type</p>
-                                            )}
-                                        </div>
-                                    );
-                                })}
+                                        return (
+                                            <div key={index} className="relative">
+                                                {isVideo ? (
+                                                    <video
+                                                        width={150}
+                                                        height={150}
+                                                        controls
+                                                        className="project-video-preview object-contain cursor-pointer"
+                                                        onClick={() => handleImageClick(mediaUrl)}
+                                                    >
+                                                        <source src={mediaUrl} type="video/mp4" />
+                                                    </video>
+                                                ) : isImage ? (
+                                                    <Image
+                                                        src={formatImageUrl(mediaUrl)}
+                                                        alt={`Image from ${project.title}`}
+                                                        width={150}
+                                                        height={150}
+                                                        className="project-image object-contain cursor-pointer"
+                                                        onClick={() => handleImageClick(mediaUrl)}
+                                                    />
+                                                ) : (
+                                                    <p className="text-red-500">Unsupported media type</p>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             )}
                             <hr className="border-black py-2" />
