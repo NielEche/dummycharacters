@@ -89,7 +89,7 @@ export default function Header() {
 
           <ul className="menlo py-6 flex justify-end space-x-8 w-full text-black">
             <li className=''>
-                <Image className="fields" src={spaceG} alt="spaceG" width={120} height={120} />
+                <Image className="fields" src={spaceG} alt="spaceG" width={120} height={120}  style={{ width: 'auto', height: 'auto' }} />
             </li>
             <li>
               <Link href="https://www.instagram.com/loudhousephc/" target='_blank' className="fields">
