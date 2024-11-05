@@ -1,17 +1,12 @@
 import useContentful from '../lib/useContentful';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import Loading from '../app/components/Loading';
 import "../partials/about.css";
 import code from '../assets/code.GIF';
 
 const AboutPage = () => {
-    const { aboutRecord, loadingAbout } = useContentful();
-    const { records, loading } = useContentful();
+     const { loading, homeRecord, bio } = useContentful();
 
-    if (loadingAbout || loading) {
-        return <Loading />;
-    }
 
     return (
         <div className="">
@@ -21,9 +16,9 @@ const AboutPage = () => {
                 </div>
                 <div className="biodetails aboutBio lg:flex justify-between">
                     <div id="niel">
-                        <p className="lg:pr-20">
-                            {records && documentToReactComponents(records)}
-                        </p>
+                        <div className="lg:pr-20">
+                            {homeRecord && documentToReactComponents(homeRecord)}
+                        </div>
                     </div>
                     <div className="text-center py-2">
                         <h3 className="marquee Amarquee"><span> Niel Eche™</span></h3>
@@ -39,7 +34,7 @@ const AboutPage = () => {
 
             <div className="text-center p-6 bg-black text-white lg:flex justify-between">
                 <div className="px-6 aboutBio menlo text-sm lg:px-8 w-full text-left">
-                    {aboutRecord && documentToReactComponents(aboutRecord)}
+                    {bio && documentToReactComponents(bio)}
                 </div>
             </div>
         </div>

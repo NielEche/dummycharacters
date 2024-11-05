@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation'; // Import from next/navigation
 import logoImage from '../../assets/DC3DTRANS.gif';
@@ -48,7 +48,7 @@ export default function Footer() {
         <ul className="flex justify-start space-x-2 w-full">
           <li className='WebButton px-2'>
             <Link href="/" className='flex'>
-                <Image src={smile} alt="Home" width={20} height={20} />
+                <Image src={smile} alt="Home" width={20} height={20}  />
               <span className='pr-2 font-black'>Eche</span> 
             </Link>
           </li>
@@ -57,7 +57,7 @@ export default function Footer() {
 
           <li className="px-1">
             <Link href="https://www.instagram.com/niel_eche/" target='_blank' >
-            <Image src={insta} alt="Instagram" width={20} height={20} />
+            <Image src={insta} alt="Instagram" width={20} height={20}  />
             </Link>
           </li>
           <li className="px-1">
