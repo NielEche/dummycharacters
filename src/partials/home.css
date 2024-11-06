@@ -12,3 +12,9 @@ body {
 .WebButton2 {
     font-size: 9px !important;
 }
+
+.bggray 
+{
+    background-color: #d9d7d2 !important;
+    margin-top: 5px;
+}

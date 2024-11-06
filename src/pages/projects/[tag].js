@@ -36,7 +36,7 @@ const ProjectsByTag = () => {
     };
 
     return (
-        <div className="py-6 lg:px-4 px-2 text-black">
+        <div className="py-6 text-black">
             <nav className="py-6 px-2">
                 <ul>
                     <li className="headLogo">
@@ -47,12 +47,12 @@ const ProjectsByTag = () => {
                     </li>
                 </ul>
             </nav>
-            <h1 className="text-lg px-2 font-black pb-6 text-right">
+            <h1 className="text-lg px-4 font-black pb-6 text-right">
                 Projects Tagged: <span className="capitalize">{tag}</span>
             </h1>
             <hr className="border-black" />
 
-            <div className="project-list lg:grid grid-cols-3 gap-4">
+            <div className="project-list lg:grid grid-cols-3 gap-4 bggray">
                 {filteredProjects.map((project) => {
                     const { id, title, field, about, cover, images } = project;
                     const isImage = /\.(jpg|jpeg|png|gif)$/i.test(cover);

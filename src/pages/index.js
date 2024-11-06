@@ -49,7 +49,7 @@ const Home = () => {
     };
 
     return (
-        <div className='py-10 lg:px-4 px-2 lg:flex justify-between'>
+        <div className='py-10 lg:px-4 px-2 lg:flex justify-between bggray'>
             <div className="project-list lg:grid grid-cols-2 gap-4">
                 {loading ? (
                     <Loading />
@@ -94,7 +94,7 @@ const Home = () => {
                                 </div>
                             
                                 <div className="relative">
-                                    <button onClick={() => toggleShareOptions(project)} className="text-sm mx-2 p-1">
+                                    <button onClick={() => toggleShareOptions(project)} className="text-sm mx-2 p-1 text-black">
                                         Share <span className="text-xl">&#x2197;</span> 
                                     </button>
                                     {showShareOptions && currentProject === project && (
