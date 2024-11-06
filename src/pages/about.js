@@ -32,7 +32,7 @@ const AboutPage = () => {
                 </li>
             </ul>
 
-            <div className="text-center p-6 bg-black text-white lg:flex justify-between">
+            <div className="text-center p-6 bg-black text-white lg:flex justify-between pb-6">
                 <div className="px-6 aboutBio menlo text-sm lg:px-8 w-full text-left">
                     {bio && documentToReactComponents(bio)}
                 </div>
