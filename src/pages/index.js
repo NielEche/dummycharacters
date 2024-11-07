@@ -5,6 +5,8 @@ import Loading from '../app/components/Loading';
 import useContentful from '../lib/useContentful';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { useState } from 'react';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
+
 
 const Home = () => {
     const { loading, projects, sound } = useContentful();
@@ -12,6 +14,17 @@ const Home = () => {
     const [expandedProject, setExpandedProject] = useState(null);
     const [showShareOptions, setShowShareOptions] = useState(false);
     const [currentProject, setCurrentProject] = useState(null);
+
+    const options = {
+        renderNode: {
+          [INLINES.HYPERLINK]: (node) => (
+            <a href={node.data.uri} target="_blank" className="underline" rel="noopener noreferrer">
+              {node.content[0].value}
+            </a>
+          ),
+        },
+      };
+      
 
     const formatImageUrl = (url) => {
         if (typeof url !== 'string' || !url) return ''; 
@@ -67,8 +80,9 @@ const Home = () => {
                                 </div>
                             </div>
 
+                            
                             <div className="project-date py-6 text-black text-sm leading-tight">
-                                {project.about && documentToReactComponents(project.about)}
+                            {project.about && documentToReactComponents(project.about, options)}
                             </div>
                             
                             {/* Display cover image */}
@@ -150,7 +164,7 @@ const Home = () => {
                 )}
             </div>
 
-            <div className="sound-section px-6 text-black lg:w-[42rem]">
+            <div className="sound-section px-6 text-black lg:w-[85rem]">
                 <h2 className="text-4xl font-bold underline mb-6">Sound</h2>
                 <div className="sound-list grid grid-cols-1 gap-4">
                     {Array.isArray(sound) && sound.map((soundItem) => (
