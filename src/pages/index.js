@@ -87,12 +87,12 @@ const Home = () => {
                             
                             {/* Display cover image */}
                             {project.cover && (
-                                <div className="image-container text-xs text-black pb-6">
+                                <div className="image-container text-xs text-black">
                                     <Image
                                         src={formatImageUrl(project.cover)}
                                         alt={`${project.title} cover`}
-                                        width={250}
-                                        height={250}
+                                        width={300}
+                                        height={300}
                                         className="project-image object-contain"
                                     />
                                 </div>
