@@ -164,7 +164,7 @@ const Home = () => {
                 )}
             </div>
 
-            <div className="sound-section px-6 text-black lg:w-[85rem]">
+            <div className="sound-section px-6 text-black lg:w-[110rem]">
                 <h2 className="text-4xl font-bold underline mb-6">Sound</h2>
                 <div className="sound-list grid grid-cols-1 gap-4">
                     {Array.isArray(sound) && sound.map((soundItem) => (
