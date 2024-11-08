@@ -154,13 +154,19 @@ const Home = () => {
                                                     onClick={() => handleImageClick(mediaUrl)}
                                                 />
                                             ) : isPDF ? (
-                                                <iframe
-                                                    src={mediaUrl}
-                                                    width={150}
-                                                    height={150}
-                                                    className="project-pdf object-contain cursor-pointer"
-                                                    title={`PDF from ${project.title}`}
-                                                />
+                                                <div className="relative w-[150px] h-[150px] cursor-pointer">
+                                                    <iframe
+                                                        src={mediaUrl}
+                                                        width={150}
+                                                        height={150}
+                                                        className="project-pdf object-contain"
+                                                        title={`PDF from ${project.title}`}
+                                                    />
+                                                    <div
+                                                        className="absolute inset-0"
+                                                        onClick={() => handleImageClick(mediaUrl)}
+                                                    />
+                                                </div>
                                             ) : (
                                                 <p className="text-red-500">Unsupported media type</p>
                                             )}
@@ -198,13 +204,23 @@ const Home = () => {
                             <button onClick={closeModal} className="biobtn">X</button>
                         </div>
                         <div className="biodetails">
-                            <Image
-                                src={formatImageUrl(selectedProject)}
-                                alt="Selected project image"
-                                width={450}
-                                height={450}
-                                className="project-image object-contain"
-                            />
+                        {selectedProject.endsWith(".pdf") ? (
+                                <iframe
+                                    src={selectedProject}
+                                    width={450}
+                                    height={500}    
+                                    className="project-pdf object-contain"
+                                    title="Selected project PDF"
+                                />
+                            ) : (
+                                <Image
+                                    src={formatImageUrl(selectedProject)}
+                                    alt="Selected project image"
+                                    width={450}
+                                    height={450}
+                                    className="project-image object-contain"
+                                />
+                            )}
                         </div>
                     </div>
                 </div>
