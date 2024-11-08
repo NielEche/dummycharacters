@@ -63,6 +63,8 @@ const Home = () => {
 
     return (
         <div className='py-10 lg:px-4 px-2 lg:flex justify-between bggray'>
+              <hr className="border-black" />
+
             <div className="project-list lg:grid grid-cols-2 gap-4">
                 {loading ? (
                     <Loading />
@@ -125,37 +127,47 @@ const Home = () => {
                             {/* Additional images section */}
                             {expandedProject === project.id && project.images && (
                                 <div className="additional-images grid grid-cols-2 gap-2 py-6">
-                                    {project.images.map((mediaUrl, index) => {
-                                        const isVideo = mediaUrl.includes("videos.ctfassets.net");
-                                        const isImage = mediaUrl.includes("images.ctfassets.net");
+                                 {project.images.map((mediaUrl, index) => {
+                                    const isVideo = mediaUrl.includes("videos.ctfassets.net");
+                                    const isImage = mediaUrl.includes("images.ctfassets.net");
+                                    const isPDF = mediaUrl.endsWith(".pdf");
 
-                                        return (
-                                            <div key={index} className="relative">
-                                                {isVideo ? (
-                                                    <video
-                                                        width={150}
-                                                        height={150}
-                                                        controls
-                                                        className="project-video-preview object-contain cursor-pointer"
-                                                        onClick={() => handleImageClick(mediaUrl)}
-                                                    >
-                                                        <source src={mediaUrl} type="video/mp4" />
-                                                    </video>
-                                                ) : isImage ? (
-                                                    <Image
-                                                        src={formatImageUrl(mediaUrl)}
-                                                        alt={`Image from ${project.title}`}
-                                                        width={150}
-                                                        height={150}
-                                                        className="project-image object-contain cursor-pointer"
-                                                        onClick={() => handleImageClick(mediaUrl)}
-                                                    />
-                                                ) : (
-                                                    <p className="text-red-500">Unsupported media type</p>
-                                                )}
-                                            </div>
-                                        );
-                                    })}
+                                    return (
+                                        <div key={index} className="relative">
+                                            {isVideo ? (
+                                                <video
+                                                    width={150}
+                                                    height={150}
+                                                    controls
+                                                    className="project-video-preview object-contain cursor-pointer"
+                                                    onClick={() => handleImageClick(mediaUrl)}
+                                                >
+                                                    <source src={mediaUrl} type="video/mp4" />
+                                                </video>
+                                            ) : isImage ? (
+                                                <Image
+                                                    src={formatImageUrl(mediaUrl)}
+                                                    alt={`Image from ${project.title}`}
+                                                    width={150}
+                                                    height={150}
+                                                    className="project-image object-contain cursor-pointer"
+                                                    onClick={() => handleImageClick(mediaUrl)}
+                                                />
+                                            ) : isPDF ? (
+                                                <iframe
+                                                    src={mediaUrl}
+                                                    width={150}
+                                                    height={150}
+                                                    className="project-pdf object-contain cursor-pointer"
+                                                    title={`PDF from ${project.title}`}
+                                                />
+                                            ) : (
+                                                <p className="text-red-500">Unsupported media type</p>
+                                            )}
+                                        </div>
+                                    );
+                                })}
+
                                 </div>
                             )}
                             <hr className="border-black py-2" />

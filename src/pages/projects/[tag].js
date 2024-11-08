@@ -117,6 +117,7 @@ const ProjectsByTag = () => {
                                     {images.map((mediaUrl, index) => {
                                         const isVideo = mediaUrl.includes("videos.ctfassets.net");
                                         const isImage = mediaUrl.includes("images.ctfassets.net");
+                                        const isPDF = mediaUrl.endsWith(".pdf");
 
                                         return (
                                             <div key={index} className="relative">
@@ -138,6 +139,14 @@ const ProjectsByTag = () => {
                                                         height={150}
                                                         className="project-image object-contain cursor-pointer"
                                                         onClick={() => handleImageClick(mediaUrl)}
+                                                    />
+                                                ) : isPDF ? (
+                                                    <iframe
+                                                        src={mediaUrl}
+                                                        width={150}
+                                                        height={150}
+                                                        className="project-pdf object-contain cursor-pointer"
+                                                        title={`PDF from ${project.title}`}
                                                     />
                                                 ) : (
                                                     <p className="text-red-500">Unsupported media type</p>
