@@ -135,15 +135,21 @@ const Home = () => {
                                     return (
                                         <div key={index} className="relative">
                                             {isVideo ? (
-                                                <video
-                                                    width={150}
-                                                    height={150}
-                                                    controls
-                                                    className="project-video-preview object-contain cursor-pointer"
-                                                    onClick={() => handleImageClick(mediaUrl)}
-                                                >
-                                                    <source src={mediaUrl} type="video/mp4" />
-                                                </video>
+                                                 <div className="relative w-[150px] h-[150px] cursor-pointer">
+                                                     <video
+                                                        width={150}
+                                                        height={150}
+                                                        controls
+                                                        className="project-video-preview object-contain cursor-pointer"
+                                                        onClick={() => handleImageClick(mediaUrl)}
+                                                        >
+                                                        <source src={mediaUrl} type="video/mp4" />
+                                                    </video>
+                                                 <div
+                                                     className="absolute inset-0"
+                                                        onClick={() => handleImageClick(mediaUrl)}
+                                                    />
+                                                </div>
                                             ) : isImage ? (
                                                 <Image
                                                     src={formatImageUrl(mediaUrl)}
@@ -205,22 +211,30 @@ const Home = () => {
                         </div>
                         <div className="biodetails">
                         {selectedProject.endsWith(".pdf") ? (
-                                <iframe
-                                    src={selectedProject}
-                                    width={450}
-                                    height={500}    
-                                    className="project-pdf object-contain"
-                                    title="Selected project PDF"
-                                />
-                            ) : (
-                                <Image
-                                    src={formatImageUrl(selectedProject)}
-                                    alt="Selected project image"
-                                    width={450}
-                                    height={450}
-                                    className="project-image object-contain"
-                                />
-                            )}
+                            <iframe
+                                src={selectedProject}
+                                width={450}
+                                height={500}    
+                                className="project-pdf object-contain"
+                                title="Selected project PDF"
+                            />
+                        ) : selectedProject.endsWith(".mp4") ? (
+                            <video
+                                src={selectedProject}
+                                width={450}
+                                height={450}
+                                controls
+                                className="project-video object-contain"
+                            />
+                        ) : (
+                            <Image
+                                src={formatImageUrl(selectedProject)}
+                                alt="Selected project image"
+                                width={450}
+                                height={450}
+                                className="project-image object-contain"
+                            />
+                        )}
                         </div>
                     </div>
                 </div>

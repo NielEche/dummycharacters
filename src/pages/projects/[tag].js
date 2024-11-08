@@ -122,15 +122,21 @@ const ProjectsByTag = () => {
                                         return (
                                             <div key={index} className="relative">
                                                 {isVideo ? (
-                                                    <video
-                                                        width={150}
-                                                        height={150}
-                                                        controls
-                                                        className="project-video-preview object-contain cursor-pointer"
-                                                        onClick={() => handleImageClick(mediaUrl)}
-                                                    >
-                                                        <source src={mediaUrl} type="video/mp4" />
-                                                    </video>
+                                                     <div className="relative w-[150px] h-[150px] cursor-pointer">
+                                                        <video
+                                                            width={150}
+                                                            height={150}
+                                                            controls
+                                                            className="project-video-preview object-contain cursor-pointer"
+                                                            onClick={() => handleImageClick(mediaUrl)}
+                                                            >
+                                                            <source src={mediaUrl} type="video/mp4" />
+                                                        </video>
+                                                    <div
+                                                        className="absolute inset-0"
+                                                            onClick={() => handleImageClick(mediaUrl)}
+                                                        />
+                                                    </div>
                                                 ) : isImage ? (
                                                     <Image
                                                         src={formatImageUrl(mediaUrl)}
@@ -183,6 +189,14 @@ const ProjectsByTag = () => {
                                     className="project-pdf object-contain"
                                     title="Selected project PDF"
                                 />
+                            ) : selectedProject.endsWith(".mp4") ? (
+                                <video
+                                    src={selectedProject}
+                                    width={450}
+                                    height={450}
+                                    controls
+                                    className="project-video object-contain"
+                                />
                             ) : (
                                 <Image
                                     src={formatImageUrl(selectedProject)}
@@ -191,7 +205,7 @@ const ProjectsByTag = () => {
                                     height={450}
                                     className="project-image object-contain"
                                 />
-                        )}
+                            )}
                     </div>
                 </div>
             </div>
