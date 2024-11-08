@@ -135,12 +135,12 @@ const Home = () => {
                                     return (
                                         <div key={index} className="relative">
                                             {isVideo ? (
-                                                 <div className="relative w-[150px] h-[150px] cursor-pointer">
+                                                 <div className="relative cursor-pointer">
                                                      <video
                                                         width={150}
                                                         height={150}
                                                         controls
-                                                        className="project-video-preview object-contain cursor-pointer"
+                                                        className="project-video object-contain cursor-pointer"
                                                         onClick={() => handleImageClick(mediaUrl)}
                                                         >
                                                         <source src={mediaUrl} type="video/mp4" />
@@ -214,7 +214,7 @@ const Home = () => {
                             <iframe
                                 src={selectedProject}
                                 width={450}
-                                height={500}    
+                                height={400}    
                                 className="project-pdf object-contain"
                                 title="Selected project PDF"
                             />
@@ -224,7 +224,7 @@ const Home = () => {
                                 width={450}
                                 height={450}
                                 controls
-                                className="project-video object-contain"
+                                className="project-videoM object-contain"
                             />
                         ) : (
                             <Image

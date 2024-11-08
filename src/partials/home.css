@@ -19,3 +19,12 @@ body {
     margin-top: 5px;
 }
 
+
+.project-video {
+    height: 200px !important;
+}
+
+
+.project-videoM {
+    height: 500px !important;
+}
